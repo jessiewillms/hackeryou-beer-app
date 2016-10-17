@@ -1,0 +1,64 @@
+/*
+
+-----------------------------------------------
+6. Wrappers
+-----------------------------------------------
+
+*/
+
+/*// .wrap__outer {
+// 	height: calc(100vh - $footer--height);
+// }*/
+
+.wrap__inner {
+	width: 80%;
+	max-width: 675px;
+	display: block;
+	margin: 0 auto;
+
+	@media (max-width: $media--small) {
+		width: 95%;
+		max-width: 415px;
+	}
+}
+
+.wrap__beer {
+	cursor: pointer;
+	padding: $padding--small;
+	margin: 10px 0;
+	&:nth-of-type(even){
+		border: 5px solid lighten($color--light-brown, 10);
+		/*background: lighten($color--light-brown, 5);*/
+	}
+	&:nth-of-type(odd){
+		border: 5px solid lighten($color--light-brown, 5);
+		/*background: lighten($color--light-brown, 10);*/
+	}
+}
+.wrap__full {
+	width: 100%;
+	padding: $padding--large;
+	clear: both;
+}
+.wrap__half {
+	padding: $padding--large;
+	overflow: hidden;
+
+	// up to phones
+	@media (max-width: 767px) {
+	   	width: 100%;
+	   	float: none;
+	}
+
+	@media (min-width: 768px) {
+	   	width: 50%;
+	   	float: left;
+	}
+
+	img {
+		display: block;
+    	min-width: 140%;
+    	margin: 0 -20% auto;
+
+	}
+}

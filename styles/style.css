@@ -1,0 +1,261 @@
+/* 
+Table of contents: 
+
+1. Defaults & resets
+2. Typography
+3. Colors
+4. Images
+5. Maps
+6. Wrappers
+7. Misc.
+8. Footer
+*/
+/*
+
+-----------------------------------------------
+1. Defaults & resets
+-----------------------------------------------
+
+*/
+/*
+
+-----------------------------------------------
+2. Defaults & resets & variables
+-----------------------------------------------
+
+*/
+* {
+  box-sizing: border-box; }
+
+html {
+  font-size: 100%; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0; }
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0; }
+
+.clearfix {
+  display: inline-block; }
+
+/* start commented backslash hack \*/
+* html .clearfix {
+  height: 1%; }
+
+.clearfix {
+  display: block; }
+
+/* close commented backslash hack */
+.fadeInDown {
+  -vendor-animation-duration: .5s;
+  -vendor-animation-delay: .5s;
+  -vendor-animation-iteration-count: infinite; }
+
+.background--light-brown {
+  background: #F5DFBE; }
+
+.wrap__beer-place {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
+
+/*
+
+-----------------------------------------------
+2. Typography
+-----------------------------------------------
+
+*/
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Abril Fatface", cursive;
+  color: #522C1B;
+  padding: 0;
+  margin: 0; }
+
+h1 {
+  font-size: 3rem;
+  margin-top: 20px; }
+
+h3 {
+  padding-bottom: 10px;
+  letter-spacing: 0.035em; }
+
+h4 {
+  font-weight: lighter;
+  display: inline-block;
+  margin: 10px 0; }
+
+p {
+  font-family: 'Open Sans', sans-serif; }
+
+header + p {
+  color: #522C1B; }
+
+.text__grey {
+  color: grey; }
+
+.text__bold {
+  font-weight: bold;
+  display: block; }
+
+.text__uppercase {
+  text-transform: uppercase; }
+
+.text__center {
+  text-align: center; }
+
+span {
+  padding: 0 3px;
+  font-family: "Abril Fatface", cursive;
+  color: #C4A077; }
+
+.span--background-wrap span {
+  background: #f8ead4;
+  color: #522C1B;
+  display: inline-block; }
+  .span--background-wrap span:not(:first-of-type) {
+    margin: 3px 5px; }
+
+.button__start {
+  cursor: pointer;
+  color: #522C1B;
+  font-family: "Abril Fatface", cursive;
+  font-size: 3em;
+  margin: 20px 0;
+  padding: 10px;
+  background: #fcf5ea; }
+
+img {
+  max-width: 100%; }
+
+.image--extra-small {
+  max-width: 15px;
+  display: inline-block;
+  margin-left: 5px; }
+
+.image--mid-small {
+  max-width: 28px;
+  display: inline-block;
+  margin-bottom: -15px; }
+
+.image__small {
+  max-width: 50px;
+  margin-bottom: -20px; }
+
+/*
+
+-----------------------------------------------
+5. Maps
+-----------------------------------------------
+
+*/
+.wrap__beer-place {
+  display: -ms-flexbox;
+  display: flex; }
+
+.map {
+  cursor: pointer;
+  height: 150px;
+  padding: 10px; }
+  .map:nth-of-type(2), .map:nth-of-type(3), .map:nth-of-type(6), .map:nth-of-type(7) {
+    background: #c2d0d1; }
+    .map:nth-of-type(2) .span--background-wrap span, .map:nth-of-type(3) .span--background-wrap span, .map:nth-of-type(6) .span--background-wrap span, .map:nth-of-type(7) .span--background-wrap span {
+      background: #c2d0d1; }
+    .map:nth-of-type(2) h3,
+    .map:nth-of-type(2) .span--background-wrap span, .map:nth-of-type(3) h3,
+    .map:nth-of-type(3) .span--background-wrap span, .map:nth-of-type(6) h3,
+    .map:nth-of-type(6) .span--background-wrap span, .map:nth-of-type(7) h3,
+    .map:nth-of-type(7) .span--background-wrap span {
+      color: white; }
+  @media (max-width: 767px) {
+    .map {
+      width: 100%;
+      margin: 10px 0; }
+      .map:nth-of-type(odd) {
+        background: #c2d0d1 !important; }
+      .map:nth-of-type(even) {
+        background: #fff !important; }
+        .map:nth-of-type(even) h3,
+        .map:nth-of-type(even) .span--background-wrap span {
+          color: #522C1B; } }
+  @media (min-width: 768px) {
+    .map {
+      -ms-flex-preferred-size: 50%;
+          flex-basis: 50%; } }
+
+/*
+
+-----------------------------------------------
+6. Wrappers
+-----------------------------------------------
+
+*/
+/*// .wrap__outer {
+// 	height: calc(100vh - $footer--height);
+// }*/
+.wrap__inner {
+  width: 80%;
+  max-width: 675px;
+  display: block;
+  margin: 0 auto; }
+  @media (max-width: 768px) {
+    .wrap__inner {
+      width: 95%;
+      max-width: 415px; } }
+
+.wrap__beer {
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px 0; }
+  .wrap__beer:nth-of-type(even) {
+    border: 5px solid #fcf5ea;
+    /*background: lighten($color--light-brown, 5);*/ }
+  .wrap__beer:nth-of-type(odd) {
+    border: 5px solid #f8ead4;
+    /*background: lighten($color--light-brown, 10);*/ }
+
+.wrap__full {
+  width: 100%;
+  padding: 20px;
+  clear: both; }
+
+.wrap__half {
+  padding: 20px;
+  overflow: hidden; }
+  @media (max-width: 767px) {
+    .wrap__half {
+      width: 100%;
+      float: none; } }
+  @media (min-width: 768px) {
+    .wrap__half {
+      width: 50%;
+      float: left; } }
+  .wrap__half img {
+    display: block;
+    min-width: 140%;
+    margin: 0 -20% auto; }
+
+/*
+
+-----------------------------------------------
+7. Misc
+-----------------------------------------------
+
+*/
+.hide {
+  display: none; }
+
+footer {
+  display: none; }

@@ -1,0 +1,58 @@
+/*
+
+-----------------------------------------------
+2. Defaults & resets & variables
+-----------------------------------------------
+
+*/
+
+* { box-sizing: border-box }
+
+
+html { 
+	font-size: 100%;
+	// background: lighten($color--light-brown, 10);
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+     }
+.clearfix { display: inline-block; }
+/* start commented backslash hack \*/
+* html .clearfix { height: 1%; }
+.clearfix { display: block; }
+/* close commented backslash hack */
+
+.fadeInDown {
+  -vendor-animation-duration: .5s;
+  -vendor-animation-delay: .5s;
+  -vendor-animation-iteration-count: infinite;
+}
+
+$padding--small: 10px;
+$padding--large: 20px;
+
+.background--light-brown {
+	background: $color--light-brown;
+}
+
+$footer--height: 150px;
+
+.wrap__beer-place {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+
+$media--small: 768px;

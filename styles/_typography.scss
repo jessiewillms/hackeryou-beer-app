@@ -1,0 +1,90 @@
+/*
+
+-----------------------------------------------
+2. Typography
+-----------------------------------------------
+
+*/
+
+$font--main: 'Abril Fatface', cursive;
+$font--secondary: 'Open Sans', cursive;
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: $font--main;
+	color: $color--dark-brown;
+	padding: 0;
+	margin: 0;
+}
+
+h1 {
+	font-size: 3rem;
+	margin-top: $padding--large;
+}
+
+h2 {
+}
+
+h3 {
+	padding-bottom: 10px;
+	letter-spacing: 0.035em;
+}
+h4 {
+	font-weight: lighter;
+	display: inline-block;
+	margin: 10px 0;
+}
+p {
+	font-family: 'Open Sans', sans-serif;
+}
+
+header + p {
+	color: $color--dark-brown;
+}
+
+.text__grey {
+	color: grey;
+}
+
+.text__bold {
+	font-weight: bold;
+	display: block
+	// margin;
+}
+
+.text__uppercase {
+	text-transform: uppercase
+}
+.text__center {
+	text-align: center
+}
+
+span {
+	padding: 0 3px;
+	font-family: $font--main;
+	// display: inline-block;
+
+	color: $color--mid-brown;
+}
+
+.span--background-wrap span {
+		background: lighten($color--light-brown, 5);
+		color: $color--dark-brown; // changes inside map
+		display: inline-block;
+		&:not(:first-of-type) {
+			margin: 3px 5px;
+		}
+	}
+
+.button__start {
+	cursor: pointer;
+	color: $color--dark-brown;
+	font-family: $font--main;
+	font-size: 3em;
+	margin: 20px 0;
+	padding: $padding--small;
+	background: lighten($color--light-brown, 10);
+	// border: 5px solid lighten($color--light-brown, 5);
+}
