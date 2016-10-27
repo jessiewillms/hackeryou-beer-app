@@ -2,23 +2,32 @@ img {
 	max-width: 100%;
 }
 
-.image--extra-small {
-	max-width: 15px;
-	display: inline-block;
-	margin-left: 5px;
+figure {
+	width: 100%;
+	margin: 0;
 }
+.image {
+	&--extra-small {
+		display: block;
+		margin: 5px auto;
+		max-width: 50px;
 
-.image--mid-small {
-	max-width: 28px;
-	display: inline-block;
-	margin-bottom: -15px;
-}
-.image--medium {
-	// max-width: 50%;
-}
-
-
-.image__small {
-	max-width: 50px;
-	margin-bottom: -20px;
+		img {
+			width: 20px; 
+			float: left;
+			display: inline;
+			&.arrow {
+				padding: 0 5px;
+			}
+		}
+	}
+	&--mid-small {
+		max-width: 28px;
+		display: inline-block;
+		margin-bottom: -15px;
+	}
+	&__small {
+		max-width: 50px;
+		margin-bottom: -20px;
+	}
 }

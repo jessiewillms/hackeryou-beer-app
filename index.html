@@ -4,29 +4,46 @@
 	<title>jessie's js projects</title>
 	<link rel="stylesheet" href="styles/animate.css">
 	<link rel="stylesheet" href="styles/style.css">
-	<link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400|Cardo" rel="stylesheet">
 </head>
 <body>
 
 <div class="wrap__outer">
 	<!-- header here -->
-	<header class="wrap__inner">
-		<h1 class="animated fadeIn">Beau's Seasonal</h1>
-		<div class="header__inner animated fadeIn">
-			<p>Since 2006 Beau’s All Natural has been brewing interesting, tasty beers like our Lug Tread Lagered Ale using the best ingredients and local spring water.</p>
+	<div class="header__inner">
+		<h1 class="animated fadeIn">Beau's seasonal beer app</h1>
+	</div>
+	
+	<figure>
+	  <img src="images/beer_background.jpg" alt="Image of beers" width="100%">
+	</figure>
 
-			<p>Our family takes pride in creating unique, wonderful and certified organic craft beer, conceived with honest consideration for the environment and our local communities, and delivered with a sense of friendly relationship.</p>
+	<header class="animated fadeIn">
+		<section class="header__wrap flexbox__display-flex">
+			<div class="wrap__beer wrap__beer-2">
+				<p class="para__large">Beer is great. You should drink more beer.</p>
+			</div>
 			
-			<p>Use this app to find our beers at the LCBO!</p>
-		</div>
-		<div class="header__inner animated fadeIn">
-			<p class="button__start text__center text__uppercase">Start <img src="images/beer.svg" alt="Icon of beer" class="image__small"></p>
-			<!--  -->
-		</div>
+			<div class="wrap__beer wrap__beer-1">
+				<p>Since 2006 Beau’s All Natural has been brewing interesting, tasty beers like our Lug Tread Lagered Ale using the best ingredients and local spring water.</p>
+				
+				<p>Our family takes pride in creating unique, wonderful and certified organic craft beer, conceived with honest consideration for the environment and our local communities, and delivered with a sense of friendly relationship.</p>
+
+				<p><em>This project was designed and developed by Jessie Willms as a technical requirement for HackerYou's full-stack class.</em></p>
+
+				<p class="button__start"><strong>Click to start</strong></p>
+			</div>
+
+
+		</section>
 	</header>
+	
 			
 	<!-- content added here -->
-	<section class="wrap wrap__inner"></section>
+	<section class="wrap wrap__inner beer_results flexbox__display-flex"></section>
+
+	<!-- modal to be created here -->
+	<article class="wrap__modal"></article>
 </div>
 
 

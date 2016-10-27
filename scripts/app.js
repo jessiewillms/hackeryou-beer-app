@@ -33,23 +33,31 @@ var beer_app = {
 		// console.log(get_maker);
 		var wrap = $('.wrap');
 
-		var beer = "";
+		var beer_initial_content = "",
+			beer_modal_content = "",
+			beer_counter = 0;
 
 		for (var i = 0; i < get_maker.length; i++) {
+
+			if (beer_counter < 6) {
+				beer_counter++;
+			} else {
+				beer_counter = 1;
+			}
 
 			// 2. ignore Lug Tread (just in case -- is_seasonal misses something)
 			if (get_maker[i].producer_name == beaus_title && get_maker[i].name !== lug_head) {
 				
 				var maker = get_maker[i];
+				
 				// 4. get the ID to pass in the other part
 				beer_product_id = maker.product_no;
-				// console.log('product_no ' + beer_product_id);
 				
 				// id + product number are the same
 				get_beer_id =  maker.id;
 
 				// 3. get beer description (eliminate null + unndefined)
-				beer_title = maker.name !== "" && maker.name !== null ? '<h2 class="text__center">' + maker.name + ' <img src="images/arrow.svg" class="image--extra-small">' + '</h2>' : "";
+				beer_title = maker.name !== "" && maker.name !== null ? '<h2 class="text__center">' + maker.name + '</h2><div class="image--extra-small"><img src="images/beer.svg"></div>' : "";
 
 				beer_image = maker.image_url !== "" && maker.image_url !== null ? '<section class="wrap__half"><img src="' + maker.image_url + '" class="image--medium"></section>' : "";
 
@@ -60,7 +68,6 @@ var beer_app = {
 				} else {
 					full_wrapper = 'wrap__full';
 				}
-				
 
 				beer_maker = maker.producer_name !== undefined && maker.producer_name !== null ? '<h3>' + maker.producer_name + '</h3>' : "";
 
@@ -85,18 +92,22 @@ var beer_app = {
 
 				beer_price = '<h4 class="text__bold">Price: $' + get_maker[i].price_in_cents / 100  + '</h4>';
 
-				// jordan suggested making the ID a data attribute
-				beer += '<div class="wrap__beer animated fadeIn" data-beer="'+ beer_product_id +'">' + beer_title  + '<div class="wrap__beer-inner clearfix hide animated fadeIn">' + beer_image +  '<section class="'+full_wrapper+'">' +  beer_maker + beer_price + beer_desc + beer_tasting + beer_tags_nice + '</section>' + '</div>' + 
+				// ID a data attribute
+				beer_initial_content += '<div class="wrap__beer wrap__beer-' + beer_counter + ' animated fadeIn " data-beer="'+ beer_product_id +'">' + beer_title + 
 				beer_serving  + '<div id="wrap__beer-place" class="wrap__beer-place"></div></div>';
+				beer_modal_content += '<div class="wrap__beer-inner clearfix hide animated fadeIn">' + beer_image +  '<section class="'+full_wrapper+'">' +  beer_maker + beer_price + beer_desc + beer_tasting + beer_tags_nice + '</section>' + '</div>';
 			}
 
 		}
 		
-		// this should go somewhere else??
+		// On click of the start button
 		$('.button__start').on('click',function(){
 			$(this).unbind();
 
-			wrap.append(beer);
+			// Scroll to correct place
+			$('html,body').animate({scrollTop: $('.wrap__inner.flexbox__display-flex').offset().top}, 800);
+
+			wrap.append(beer_initial_content);
 
 			// 4. get map + directions. When a user selects one, they want you to provide a description and also show the stores that carry that particular beer.
 			$( ".wrap__beer" ).on('click',function(){
@@ -218,17 +229,13 @@ $(document).on('click', '.map',function(e){
 
 		if ( $(this).data('clicked') == false ) {
 
-			// this isn't working
+			// TODO: fix this
 			$(this).attr('data-clicked',true);
-			// remove the id b/c ids repeat
-			// $(this).attr('id','clicked');
 
 
 			// call the map function
 			initMap();
 
-		} else {
-			console.log('already been clicked');
 		}
 
 });
