@@ -1,0 +1,23 @@
+/*
+
+-----------------------------------------------
+7. Modal
+-----------------------------------------------
+
+*/
+
+.wrap__modal {
+    width: 80vw;
+    height: 80vh;
+    overflow: scroll;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    border: 5px solid $color--blue;
+    background: $color--white;
+    display: block;
+    margin: 50px auto;
+}

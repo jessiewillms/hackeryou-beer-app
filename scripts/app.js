@@ -31,7 +31,9 @@ var beer_app = {
 		var get_maker = response_data.result;
 
 		// console.log(get_maker);
-		var wrap = $('.wrap');
+		var wrap = $('.wrap'),
+			wrap__modal = $('.wrap__modal');
+
 
 		var beer_initial_content = "",
 			beer_modal_content = "",
@@ -93,9 +95,9 @@ var beer_app = {
 				beer_price = '<h4 class="text__bold">Price: $' + get_maker[i].price_in_cents / 100  + '</h4>';
 
 				// ID a data attribute
-				beer_initial_content += '<div class="wrap__beer wrap__beer-' + beer_counter + ' animated fadeIn " data-beer="'+ beer_product_id +'">' + beer_title + 
-				beer_serving  + '<div id="wrap__beer-place" class="wrap__beer-place"></div></div>';
-				beer_modal_content += '<div class="wrap__beer-inner clearfix hide animated fadeIn">' + beer_image +  '<section class="'+full_wrapper+'">' +  beer_maker + beer_price + beer_desc + beer_tasting + beer_tags_nice + '</section>' + '</div>';
+				beer_initial_content += '<div class="unique_id_here wrap__beer wrap__beer-' + beer_counter + ' animated fadeIn " data-beer="'+ beer_product_id +'">' + beer_title  + '</div>';
+
+				beer_modal_content += '<div class="wrap__beer-inner clearfix  animated fadeIn">' + beer_image +  '<section class="'+ full_wrapper +'">' +beer_serving+ beer_maker + beer_price + beer_desc + beer_tasting + beer_tags_nice + '</section><div id="wrap__beer-place" class="wrap__beer-place"></div></div>';
 			}
 
 		}
@@ -109,136 +111,75 @@ var beer_app = {
 
 			wrap.append(beer_initial_content);
 
-			// 4. get map + directions. When a user selects one, they want you to provide a description and also show the stores that carry that particular beer.
-			$( ".wrap__beer" ).on('click',function(){
 
-				// $(this).unbind();
-				
-				$('.wrap__beer-inner').addClass('hide');
-				$('.map').addClass('hide');
-			  
-			  	
-			  	$(this).find('.wrap__beer-inner').toggleClass('hide');
+			// 4. get map + directions. When a user selects one, they want you to provide a description and also show the stores that carry that particular beer.
+			$( ".unique_id_here").on('click',function(){
+				// $('.wrap__beer-inner').addClass('hide');
+				// $('.map').addClass('hide');
+				// $(this).find('.wrap__beer-inner').toggleClass('hide');
+				console.log('click');
+
+				wrap__modal.append(beer_modal_content).removeClass('js-modal-hide');
+
 
 			  get_beer_data = $(this).data('beer');
 			  // log the store id on click
 
-			  // another request to get store data for product id
-			  $.ajax('http://lcboapi.com/stores?product_id=' + get_beer_data, {
-			  	access_key: api_key, // this is doing nothing ??? 
-			  	method: 'GET',
-			  	dataType: 'jsonp',
-			  	success: function(location_response) {
-			  		// console.log(location_response);
-
-			  		var store_info = "",
-			  			counter = 0; // for limitng addresses
-
-			  		for (var i = 0; i < location_response.result.length; i++) {
-			  			counter++; // counter is for limitng addresses
-			  			// console.log('counter',counter);
-
-			  			var place = location_response.result[i];
-
-			  			// geo data for map
-			  			place_lat = place.latitude !== "" && place.latitude !== null ? place.latitude : "";
-			  			place_long = place.longitude !== "" && place.longitude !== null ? place.longitude : "";
-			  			
-			  			// console.log(place_long, place_lat);
-			  			
-			  			// postal code
-			  			place_postal = place.postal_code !== "" && place.postal_code !== null ? place.postal_code : "";
-			  			// console.log(place_postal);
-
-			  			place_address_line_1 = place.address_line_1 !== "" && place.address_line_1 !== null ? '<div class="span--background-wrap"><span>' + place.address_line_1 + '</span><img src="images/map.svg" class="image--mid-small"></div>' : "";
-			  			
-			  			place_address_line_2 = place.address_line_2 !== "" && place.address_line_2 !== null ? place.address_line_2 : "";
-
-			  			place_store_id = place.id != "" && place.id !== null ? place.id : "";
-			  			// console.log(place_unique_id);
-
-			  			if (counter <= 6) {
-			  				place_names = place.name !== null ? '<h3>' + place.name + '</h3>' : "";
-			  				address = '<div class="map" data-lat="' + place_lat + '" data-long="' + place_long + '" data-postal="' + place_postal + '" data-id="' + place_postal + '" id="id_' + place_store_id + '" data-clicked="false">' + place_names + place_address_line_1 + '</div>';
-			  			} else {
-			  				address = "",
-			  				place_names = "";
-			  			}
-			  			// console.log(place_address_line_2);
-			  			store_info +=  address;
-
-			  			// city
-			  			place_city = place.city !== "" && place.city !== null ? place.city : "";
-			  			// console.log(place_city);
-
-			  			// tasting bar 
-			  			place_bar = place.has_tasting_bar !== "" && place.has_tasting_bar !== null ? place.has_tasting_bar : "";
-			  			// console.log(place_bar);
-
-			  			// quantity
-			  			place = place.quantity !== "" && place.quantity !== null && place.quantity !== undefined ? place.quantity : "";
-			  			// cosnsole.log(place);
-			  		}
-
-			  		// console.log(store_info);
-
-			  		$("[data-beer='" + get_beer_data + "']").find('.wrap__beer-place').html(store_info);
-			  		
-			  		// call the function that will add the location information as a data-attribute of location. when you click on the .wrap_beer, check if the data-attribute exists
-			  	}
-			  });
-
 			});
+
+			
 		});
+		
 
 		
 	}, // end parse_response
 
 };
 
-$(document).on('click', '.map',function(e){
-	e.preventDefault();
+// Inner map click
+// $(document).on('click', '.map',function(e){
+// 	e.preventDefault();
 
-	var map_lat = $(this).data('lat'),
-		map_long = $(this).data('long'),
-		map_postal = $(this).data('postal'),
-		place_unique_id = $(this).attr('id'),
-		been_clicked = $(this).data('clicked');
+// 	var map_lat = $(this).data('lat'),
+// 		map_long = $(this).data('long'),
+// 		map_postal = $(this).data('postal'),
+// 		place_unique_id = $(this).attr('id'),
+// 		been_clicked = $(this).data('clicked');
 
-		// console.log(been_clicked);
+// 		// console.log(been_clicked);
 
-		var initMap = function() {
-		  var myLatlng = {lat: map_lat, lng: map_long};
+// 		var initMap = function() {
+// 		  var myLatlng = {lat: map_lat, lng: map_long};
 
-		  var map = new google.maps.Map(document.getElementById(place_unique_id), {
-		    zoom: 4,
-		    center: myLatlng
-		  });
+// 		  var map = new google.maps.Map(document.getElementById(place_unique_id), {
+// 		    zoom: 4,
+// 		    center: myLatlng
+// 		  });
 
-		  var marker = new google.maps.Marker({
-		    position: myLatlng,
-		    map: map,
-		    title: 'Click to zoom'
-		  });
+// 		  var marker = new google.maps.Marker({
+// 		    position: myLatlng,
+// 		    map: map,
+// 		    title: 'Click to zoom'
+// 		  });
 
-		  marker.addListener('click', function() {
-		    map.setZoom(8);
-		    map.setCenter(marker.getPosition());
-		  });
-		}
+// 		  marker.addListener('click', function() {
+// 		    map.setZoom(8);
+// 		    map.setCenter(marker.getPosition());
+// 		  });
+// 		}
 
-		if ( $(this).data('clicked') == false ) {
+// 		if ( $(this).data('clicked') == false ) {
 
-			// TODO: fix this
-			$(this).attr('data-clicked',true);
+// 			// TODO: fix this
+// 			$(this).attr('data-clicked',true);
 
 
-			// call the map function
-			initMap();
+// 			// call the map function
+// 			initMap();
 
-		}
+// 		}
 
-});
+// });
 
 $(document).ready(function(){
 	beer_app.init();

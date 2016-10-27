@@ -119,7 +119,15 @@ span {
 	font-weight: 400;
 	font-size: 24px;
 	margin: 20px auto;
-	padding: $padding--small 0;
-	display: block;
-	// background: white;
+	padding: $padding--small 20px;
+	display: inline-block;
+	color: $color--blue;
+	background: white;
+	border: 3px solid white;
+
+	&:hover {
+		background: $color--blue;
+		color: white;
+		border: 3px solid white;
+	}
 }

@@ -7,8 +7,9 @@ Table of contents:
 4. Images
 5. Maps
 6. Wrappers
-7. Misc.
-8. Footer
+7. Modal.
+8. Misc.
+9. Footer
 */
 /*
 
@@ -165,8 +166,15 @@ span {
   font-weight: 400;
   font-size: 24px;
   margin: 20px auto;
-  padding: 10px 0;
-  display: block; }
+  padding: 10px 20px;
+  display: inline-block;
+  color: #2C2851;
+  background: white;
+  border: 3px solid white; }
+  .button__start:hover {
+    background: #2C2851;
+    color: white;
+    border: 3px solid white; }
 
 img {
   max-width: 100%; }
@@ -256,7 +264,8 @@ header {
   margin-bottom: 50px; }
 
 .header__inner {
-  padding: 50px 0; }
+  padding: 50px 0;
+  background: #fcf5ea; }
 
 .flexbox__display-flex {
   display: -ms-flexbox !important;
@@ -326,12 +335,42 @@ header {
 /*
 
 -----------------------------------------------
-7. Misc
+7. Modal
 -----------------------------------------------
 
 */
+.wrap__modal {
+  width: 80vw;
+  height: 80vh;
+  overflow: scroll;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  border: 5px solid #2C2851;
+  background: #fff;
+  display: block;
+  margin: 50px auto; }
+
+/*
+
+-----------------------------------------------
+8. Misc
+-----------------------------------------------
+
+*/
+.js-modal-hide,
 .hide {
   display: none; }
 
+/*
+
+-----------------------------------------------
+9. Footer
+-----------------------------------------------
+
+*/
 footer {
   display: none; }

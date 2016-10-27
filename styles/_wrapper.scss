@@ -6,6 +6,7 @@
 
 */
 
+
 header {
 	margin-top: -100px !important;
 	display: block;
@@ -23,6 +24,7 @@ header {
 }
 .header__inner {
 	padding: 50px 0;
+	background: lighten($color--light-brown, 10);
 }
 
 .flexbox__display-flex {
